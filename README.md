@@ -1,10 +1,6 @@
 # jungle-beats
 Turing's module 1 project
 
----
-layout: page
-title: Jungle Beat
----
 
 # Jungle Beat
 
