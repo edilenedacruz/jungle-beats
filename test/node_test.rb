@@ -10,7 +10,13 @@ class NodeTest < Minitest::Test
     assert_equal "plop", node.data
   end
 
-  def test_next_node_is_nil 
+  def test_it_can_have_different_data
+    node = Node.new("ding")
+
+    assert_equal "ding", node.data
+  end
+
+  def test_next_node_is_nil
     node = Node.new("plop")
 
     assert_equal nil, node.next_node
