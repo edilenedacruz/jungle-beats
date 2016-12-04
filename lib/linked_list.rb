@@ -2,7 +2,7 @@ require 'pry'
 require_relative 'node'
 
 class LinkedList
-  attr_reader :head
+  attr_accessor :head
 
   def initialize
     @head = nil
@@ -10,10 +10,13 @@ class LinkedList
   end
 
   def append(data)
-    new_node = Node.new(data)
+    @count += 1
     if @head.nil?
-      @head = new_node
-      @count += 1
+      @head = Node.new(data)
+    else
+      current_node = @head
+      current_node = current_node.next_node until current_node.next_node.nil?
+      current_node.next_node = Node.new(data)
     end
   end
 
@@ -23,7 +26,14 @@ class LinkedList
 
   def to_string
     string = ""
-    string << @head.data
+    current_node = @head
+    string << current_node.data
+
+    while current_node.next_node != nil
+      current_node = current_node.next_node
+      string << " #{current_node.data}"
+    end
+    string
   end
 
 end
