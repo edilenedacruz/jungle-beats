@@ -4,6 +4,13 @@ require './lib/linked_list'
 require 'pry'
 
 class LinkedListTest < Minitest::Test
+
+  def test_class_exists
+    list = LinkedList.new
+
+    assert_instance_of LinkedList, list
+  end
+
   def test_head_is_nil_by_default
     list = LinkedList.new
 
@@ -60,7 +67,7 @@ class LinkedListTest < Minitest::Test
     assert_equal "deep", list.head.next_node.data
   end
 
-  def test_it_an_count_new_nodes
+  def test_it_can_count_new_nodes
     list = LinkedList.new
     list.append("doop")
     list.append("deep")
@@ -74,6 +81,60 @@ class LinkedListTest < Minitest::Test
     list.append("deep")
 
     assert_equal "doop deep", list.to_string
+  end
+
+  def test_it_can_prepend
+    list = LinkedList.new
+    list.append("plop")
+    list.append("suu")
+    list.prepend("dop")
+    assert_equal "dop", list.head.data
+  end
+
+  def test_string_has_prepended_data
+    list = LinkedList.new
+    list.append("plop")
+    list.append("suu")
+    list.prepend("dop")
+    assert_equal "dop plop suu", list.to_string
+  end
+
+  def test_it_counts_prepended_nodes
+    list = LinkedList.new
+    list.append("plop")
+    list.append("suu")
+    list.prepend("dop")
+    assert_equal 3, list.count
+  end
+
+  def test_it_can_insert_at_specific_index
+    list = LinkedList.new
+    list.append("plop")
+    list.append("suu")
+    list.prepend("dop")
+    list.insert(1, "woo")
+
+    assert_equal "woo", list.insert(1, "woo").data
+  end
+
+  def test_it_can_count_inserted_data
+    list = LinkedList.new
+    list.append("plop")
+    list.append("suu")
+    list.prepend("dop")
+    list.insert(1, "woo")
+
+    assert_equal "dop woo plop suu", list.to_string
+  end
+
+  def test_it_can_insert_at_different_index
+    list = LinkedList.new
+    list.append("plop")
+    list.append("suu")
+    list.prepend("dop")
+    list.insert(2, "woo")
+
+    assert_equal "dop plop woo suu", list.to_string
   end
 
 end
