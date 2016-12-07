@@ -137,4 +137,89 @@ class LinkedListTest < Minitest::Test
     assert_equal "dop plop woo suu", list.to_string
   end
 
+  def test_it_can_have_five_words
+    list = LinkedList.new
+    list.append("woo")
+    list.prepend("deep")
+    list.append("blop")
+    list.insert(2, "shu")
+    list.insert(2, "shi")
+
+    assert_equal "deep woo shi shu blop", list.to_string
+  end
+
+  def test_it_can_find_elements_at_specific_position_and_returns_n_elements
+    list = LinkedList.new
+    list.append("woo")
+    list.prepend("deep")
+    list.append("blop")
+    list.insert(2, "shu")
+    list.insert(2, "shi")
+
+    assert_equal "shi", list.find(2, 1)
+  end
+
+  def test_it_can_find_elements_at_specific_position_and_returns_n_elements
+    list = LinkedList.new
+    list.append("woo")
+    list.prepend("deep")
+    list.append("blop")
+    list.insert(2, "shu")
+    list.insert(2, "shi")
+
+    assert_equal "woo shi shu", list.find(1, 3)
+  end
+
+  def test_it_can_confirm_if_data_is_in_list
+    list = LinkedList.new
+    list.append("woo")
+    list.prepend("deep")
+    list.append("blop")
+    list.insert(2, "shu")
+    list.insert(2, "shi")
+
+    assert_equal true, list.includes?("deep")
+  end
+
+  def test_it_can_confirm_if_data_is_in_list
+    list = LinkedList.new
+    list.append("woo")
+    list.prepend("deep")
+    list.append("blop")
+    list.insert(2, "shu")
+    list.insert(2, "shi")
+
+    assert_equal false, list.includes?("dep")
+  end
+
+  def test_it_can_remove_last_data
+    list = LinkedList.new
+    list.append("woo")
+    list.prepend("deep")
+    list.append("blop")
+    list.insert(2, "shu")
+    list.insert(2, "shi")
+
+    assert_equal "blop", list.pop
+  end
+
+  def test_it_can_remove_the_new_last_data
+    list = LinkedList.new
+    list.append("woo")
+    list.prepend("deep")
+    list.insert(2, "shu")
+    list.insert(2, "shi")
+
+    assert_equal "shu", list.pop
+  end
+
+  def test_it_still_can_add_to_string
+    list = LinkedList.new
+    list.append("woo")
+    list.prepend("deep")
+    list.insert(2, "shi")
+
+    assert_equal "deep woo shi", list.to_string
+  end
+
 end
