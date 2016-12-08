@@ -2,7 +2,7 @@ require 'pry'
 require_relative 'node'
 
 class LinkedList
-  attr_accessor :head
+  attr_reader :head
 
   def initialize
     @head = nil
@@ -26,7 +26,7 @@ class LinkedList
 
   def to_string
     string = ""
-    current_node = @head
+    current_node = head
     string << current_node.data
 
     until current_node.next_node.nil?
@@ -80,7 +80,7 @@ class LinkedList
 
   def includes?(data)
     current_node = @head
-    until current_node.next_node.nil? do
+    until current_node.next_node.nil?
        return true if current_node.data == data
         current_node = current_node.next_node
       end
@@ -89,7 +89,7 @@ class LinkedList
 
   def pop
     current_node = @head
-    until current_node.next_node.next_node.nil? do #because you need at least 2 nodes
+    until current_node.next_node.next_node.nil?
       current_node = current_node.next_node
     end
     last = current_node.next_node.data
